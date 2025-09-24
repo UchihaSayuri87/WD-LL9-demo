@@ -89,10 +89,14 @@ function generateSetlist() {
 
   document.getElementById("timer-section").classList.remove("hidden");
 
-  document.querySelectorAll("#setlist li").forEach(li => li.classList.add("fade-in"));
+  document
+    .querySelectorAll("#setlist li")
+    .forEach((li) => li.classList.add("fade-in"));
 }
 
-document.getElementById("generateSetlist").addEventListener("click", generateSetlist);
+document
+  .getElementById("generateSetlist")
+  .addEventListener("click", generateSetlist);
 
 // ----------------------------
 // ⏳ Countdown Timer
@@ -151,15 +155,21 @@ document.getElementById("fanFavorite").innerHTML = `
   <div id="voteCount">Votes: 0</div>
 `;
 
+// When the vote button is clicked, increase the vote count and disable the button
 document.getElementById("vote").addEventListener("click", () => {
-  let votes = Number(document.getElementById("voteCount").textContent.replace(/[^0-9]/g, ""));
+  // Only allow one vote per reset
+  let votes = Number(
+    document.getElementById("voteCount").textContent.replace(/[^0-9]/g, "")
+  );
   votes++;
   document.getElementById("voteCount").textContent = `Votes: ${votes}`;
   document.getElementById("vote").disabled = true;
   document.getElementById("vote").textContent = "Voted!";
 });
 
+// When the reset button is clicked, reset the vote count and enable the vote button
 document.getElementById("resetVote").addEventListener("click", () => {
+  document.getElementById("voteCount").textContent = "Votes: 0";
   document.getElementById("vote").disabled = false;
   document.getElementById("vote").textContent = "Vote";
 });
@@ -248,7 +258,7 @@ const bandBios = [
   "🎸 Rune (Guitar): Rune's riffs are legendary in Norway's heavy metal scene, blending alt rock with dark, smoky vibes.",
   "🥁 Lars (Drums): Lars drives the energy with thunderous beats and relentless stamina, never missing a show.",
   "🎹 Ingrid (Synths): Ingrid adds haunting synth layers, giving Skullcapz their signature atmospheric sound.",
-  "🎸 Bjorn (Bass): Bjorn is the fan favorite, known for wild solos and connecting with the band's loyal fanbase."
+  "🎸 Bjorn (Bass): Bjorn is the fan favorite, known for wild solos and connecting with the band's loyal fanbase.",
 ];
 
 // Add a button and output area for random band member bio
@@ -319,28 +329,27 @@ async function askOpenAI() {
 }
 
 document.getElementById("askOpenAI").addEventListener("click", askOpenAI);
-  // Shuffle the allSongs array using Fisher-Yates
-  const shuffledSongs = [...allSongs];
-  for (let i = shuffledSongs.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffledSongs[i], shuffledSongs[j]] = [shuffledSongs[j], shuffledSongs[i]];
-  }
+// Shuffle the allSongs array using Fisher-Yates
+const shuffledSongs = [...allSongs];
+for (let i = shuffledSongs.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [shuffledSongs[i], shuffledSongs[j]] = [shuffledSongs[j], shuffledSongs[i]];
+}
 
-  // Build HTML for the setlist
-  let setlistHTML = "";
-  for (const song of shuffledSongs) {
-    setlistHTML += `<li>${song}</li>`;
-  }
-  document.getElementById("setlist").innerHTML = setlistHTML;
+// Build HTML for the setlist
+let setlistHTML = "";
+for (const song of shuffledSongs) {
+  setlistHTML += `<li>${song}</li>`;
+}
+document.getElementById("setlist").innerHTML = setlistHTML;
 
-  // Show the countdown timer section
-  document.getElementById("timer-section").classList.remove("hidden");
+// Show the countdown timer section
+document.getElementById("timer-section").classList.remove("hidden");
 
-  // Add fade-in animation to each setlist item
-  document
-    .querySelectorAll("#setlist li")
-    .forEach((li) => li.classList.add("fade-in"));
-
+// Add fade-in animation to each setlist item
+document
+  .querySelectorAll("#setlist li")
+  .forEach((li) => li.classList.add("fade-in"));
 
 // When the button is clicked, generate the setlist
 document

@@ -158,7 +158,11 @@ document.getElementById("fanFavorite").innerHTML = `
 // When the vote button is clicked, increase the vote count and disable the button
 document.getElementById("vote").addEventListener("click", () => {
   // Only allow one vote per reset
-  document.getElementById("voteCount").textContent = "Votes: 1";
+  let votes = Number(
+    document.getElementById("voteCount").textContent.replace(/[^0-9]/g, "")
+  );
+  votes++;
+  document.getElementById("voteCount").textContent = `Votes: ${votes}`;
   document.getElementById("vote").disabled = true;
   document.getElementById("vote").textContent = "Voted!";
 });
@@ -398,10 +402,6 @@ async function askOpenAI() {
     // Show error message if something goes wrong
     resultDiv.textContent = "Error: " + error.message;
   }
-}
-
-// When the button is clicked, call askOpenAI()
-document.getElementById("askOpenAI").addEventListener("click", askOpenAI);
 }
 
 // When the button is clicked, call askOpenAI()

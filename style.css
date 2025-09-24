@@ -1,5 +1,106 @@
+/* Rock Vibe Enhancements */
 body {
-  font-family: 'Metal Mania', cursive;
+  background: #111 url("assets/grunge-texture.png") repeat;
+  background-blend-mode: multiply;
+  font-family: "Metal Mania", cursive;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2 {
+  color: #e63946;
+  text-shadow: 0 0 8px #ff0059, 0 0 16px #fff;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.7;
+  }
+  55% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 1;
+  }
+}
+h1 {
+  animation: flicker 1.2s infinite;
+}
+
+button {
+  background: linear-gradient(90deg, #e63946 60%, #ff0059 100%);
+  box-shadow: 0 0 10px #ff0059;
+}
+
+img.rock-img {
+  border: 3px solid #e63946;
+  box-shadow: 0 0 20px #ff0059;
+  border-radius: 8px;
+}
+
+section {
+  background: radial-gradient(circle at top, #222 0%, transparent 70%);
+  border-radius: 10px;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+/* Fade-in animation for list items and winner output */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Zoom-in effect for images */
+.zoom-in {
+  transition: transform 0.4s;
+}
+.zoom-in:hover {
+  transform: scale(1.15);
+}
+
+/* Animate band bio toggle button */
+#toggleBio.active-toggle {
+  transform: scale(1.1);
+  background-color: #a83232;
+  transition: transform 0.2s, background-color 0.2s;
+}
+/* Pulse animation for countdown */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#countdown.pulse {
+  animation: pulse 0.5s;
+}
+
+#countdown {
+  font-size: 2em;
+  font-weight: bold;
+  color: #e63946;
+  transition: color 0.3s;
+}
+body {
+  font-family: "Metal Mania", cursive;
   background-color: black;
   color: white;
   text-align: center;
@@ -7,7 +108,8 @@ body {
   padding: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #e63946;
 }
 

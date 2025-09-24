@@ -12,7 +12,26 @@ body {
 h1,
 h2 {
   color: #e63946;
-  text-shadow: 0 0 8px #ff0059, 0 0 16px #fff;
+  /* Tone down blur and add black outline to letters */
+  text-shadow: 0 0 2px #ff0059, /* less blur */ 1px 1px 0px #000,
+    /* black outline bottom right */ -1px -1px 0px #000,
+    /* black outline top left */ 1px -1px 0px #000,
+    /* black outline top right */ -1px 1px 0px #000; /* black outline bottom left */
+}
+
+/* Add black outline to all text for readability */
+body,
+p,
+li,
+#countdown,
+#setlist,
+#winnerOutput,
+#voteCount,
+#nextStop,
+#emailResult,
+#bio {
+  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000,
+    -1px 1px 0px #000;
 }
 
 @keyframes flicker {
@@ -37,6 +56,10 @@ h1 {
 button {
   background: linear-gradient(90deg, #e63946 60%, #ff0059 100%);
   box-shadow: 0 0 10px #ff0059;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.08) rotate(-2deg);
 }
 
 img.rock-img {
@@ -126,6 +149,10 @@ button {
   cursor: pointer;
   font-weight: bold;
   margin-top: 10px;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.08) rotate(-2deg);
 }
 
 ul {
@@ -140,6 +167,11 @@ li {
   padding: 8px 12px;
   width: fit-content;
   border-radius: 5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+li:hover {
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 0 10px #e63946;
 }
 
 .hidden {
